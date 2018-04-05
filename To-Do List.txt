@@ -1,0 +1,17 @@
+- Remove legacy CMD wrappers from all current Lua files
+
+=== EVALUATION SCREEN ===
+- Organize the evaluation screen to use ActorFrame relative positioning, makes it a lot easier to move things
+- Add Held/LetGo, Mines, and Earliest/Latest/Mean information
+- Add song information such as name, song pack, and rate
+- Add player/profile info
+- Add high score list
+
+=== MUSIC SELECT SCREEN ===
+- Start adding profile and song info to the music selection screen
+- That includes previous scores, current high score, and song skillset info
+
+=== GAMEPLAY SCREEN ===
+- Add song length bar
+- Add judgment counter
+- Add current Wife%
