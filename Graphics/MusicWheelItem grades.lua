@@ -48,7 +48,7 @@ return Def.ActorFrame{
 			self:x(-145):y(-4):horizalign("left"):diffuse(color("#ffffff")):maxwidth(550):zoom(0.5):shadowlength(1)
 		end,
 		SetCommand=function(self,params)
-			song = GAMESTATE:GetCurrentSong()
+			song = params.Song
 			local title = song and song:GetDisplayMainTitle() or ""
 			self:settext(title)
 		end;
