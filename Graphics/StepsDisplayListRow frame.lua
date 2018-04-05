@@ -21,11 +21,9 @@ t[#t+1] = LoadFont("Common Normal")..{
 		self.steps=nil
 	end;
     CurrentStepsP1ChangedMessageCommand=function(self) self:playcommand("MsdUpdate") end;
-	-- Also, this doesn't work
 	CurrentRateChangedMessageCommand=function(self)
 		self:playcommand("MsdUpdate");
 	end;
-	-- This causes it to lag
 	SetCommand=function(self, params)
 		--Ignore if we're SetCommanded without params
 		if params == nil or params.StepsType == nil or params.CustomDifficulty == nil then return end

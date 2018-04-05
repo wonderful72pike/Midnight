@@ -9,6 +9,7 @@ local Frame = Def.ActorFrame {
     -- This function manually updates ALL actors
     SetCommand=function(self)
         local steps = GAMESTATE:GetCurrentSteps(PLAYER_1); -- steps
+		self:visible(not not GAMESTATE:GetCurrentSong())
         for i=1, #skillsets do
             local SSR = skillsets[i];
             local Meter = steps:GetMSD(getCurRateValue(), i);
@@ -26,7 +27,7 @@ local Frame = Def.ActorFrame {
             BarUI:zoomto(360*percentage,2);
         end;
     end;
-    
+	CurrentSongChangedMessageCommand=function(self) self:queuecommand("Set") end;
     CurrentRateChangedMessageCommand=function(self) self:queuecommand("Set") end;
     CurrentStepsP1ChangedMessageCommand=function(self) self:queuecommand("Set") end;
 };
