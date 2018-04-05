@@ -1,5 +1,7 @@
 return Def.Sprite {
-	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y);
+	InitCommand=function(self)
+		self:x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y)
+	end;
 	OnCommand=function(self)
 		if GAMESTATE:GetCurrentSong():GetBackgroundPath() then
 			self:visible(true);

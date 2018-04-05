@@ -10,7 +10,9 @@ return Def.ActorFrame {
 
 	LoadFont("Common Normal")..{
 		Text="Hello",
-		InitCommand=cmd(x,-151;horizalign,"left";diffuse,color("#ffffff");maxwidth,450;zoom,0.55;shadowlength,1),
+		InitCommand=function(self)
+			self:x(-151):horizalign("left"):diffuse(color("#ffffff")):maxwidth(450):zoom(0.55):shadowlength(1)
+		end,
 		SetCommand=function(self, params)
 			self:settext(params.Text)
 		end;

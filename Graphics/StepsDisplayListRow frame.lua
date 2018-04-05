@@ -1,7 +1,9 @@
 t = Def.ActorFrame{}
 
 t[#t+1] = Def.Quad{
-	InitCommand=cmd(zoomto,120,20;diffusealpha,0.7);
+	InitCommand=function(self)
+		self:zoomto(120,20):diffusealpha(0.7)
+	end;
 };
 
 t[#t+1] = Def.Quad{
@@ -18,17 +20,19 @@ t[#t+1] = LoadFont("Common Normal")..{
 		self:zoom(0.6);
 	end;
 	-- This causes it to lag
-	--[[
 	SetCommand=function(self, param)
-		local song = GAMESTATE:GetCurrentSong();
-		local msd = song:GetOneSteps(param.StepsType, param.CustomDifficulty):GetMSD(getCurRateValue(), 1);
-		self:settextf("%05.2f", msd);
+		local steps = GAMESTATE:GetCurrentSteps(PLAYER_1);
+		if steps then
+			local msd =  steps:GetMSD(getCurRateValue(), 1);
+			self:settextf("%05.2f", msd);
+		else
+			self:settext("");
+		end
 	end;
 	-- Also, this doesn't work
 	CurrentRateChangedMessageCommand=function(self)
 		self:queuecommand("Set");
 	end;
-	]]
 }
 
 return t

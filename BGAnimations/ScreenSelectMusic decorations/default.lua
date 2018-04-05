@@ -56,18 +56,15 @@ Screen[#Screen+1] = LoadActor("Tab_MSD");
 Screen[#Screen+1] = LoadActor("TopRightPane");
 
 Screen[#Screen+1] = Def.ActorFrame{
-	-- **frames/bars**
-	Def.Quad{InitCommand=cmd(xy,frameX,frameY-76;zoomto,110,94;halign,0;valign,0;diffuse,color("#333333CC");diffusealpha,0.66)},			--Upper Bar
-	Def.Quad{InitCommand=cmd(xy,frameX,frameY+18;zoomto,frameWidth+4,50;halign,0;valign,0;diffuse,color("#333333CC");diffusealpha,0.66)},	--Lower Bar
-	Def.Quad{InitCommand=cmd(xy,frameX,frameY-76;zoomto,8,144;halign,0;valign,0;diffuse,getMainColor('highlight');diffusealpha,0.5)},		--Side Bar (purple streak on the left)
-	
 	-- **score related stuff** These need to be updated with rate changed commands
 	-- Primary percent score
 	LoadFont("Common Large")..{
         InitCommand=function(self)
             self:xy(SCREEN_CENTER_X, SCREEN_CENTER_Y);
         end;
-		BeginCommand=cmd(queuecommand,"Set");
+		BeginCommand=function(self)
+			self:queuecommand("Set")
+		end;
         SetCommand=function(self)
             local score = GetDisplayScore();
             if score then
@@ -80,8 +77,12 @@ Screen[#Screen+1] = Def.ActorFrame{
                 self:diffuse(color("#989898"));
 			end
 		end;
-		CurrentStepsP1ChangedMessageCommand=cmd(queuecommand,"Set"),
-		CurrentRateChangedMessageCommand=cmd(queuecommand,"Set"),
+		CurrentStepsP1ChangedMessageCommand=function(self)
+			self:queuecommand("Set")
+		end,
+		CurrentRateChangedMessageCommand=function(self)
+			self:queuecommand("Set")
+		end,
 	},
 	
 	-- Rate for the displayed score
@@ -89,7 +90,9 @@ Screen[#Screen+1] = Def.ActorFrame{
         InitCommand=function(self)
             self:xy(SCREEN_CENTER_X+40, SCREEN_BOTTOM-50);
         end;
-		BeginCommand=cmd(queuecommand,"Set"),
+		BeginCommand=function(self)
+			self:queuecommand("Set")
+		end,
         SetCommand=function(self)
             local score = GetDisplayScore();
 			if score then 
@@ -111,8 +114,12 @@ Screen[#Screen+1] = Def.ActorFrame{
 				self:settext("")
 			end
 		end;
-		CurrentStepsP1ChangedMessageCommand=cmd(queuecommand,"Set");
-		CurrentRateChangedMessageCommand=cmd(queuecommand,"Set");
+		CurrentStepsP1ChangedMessageCommand=function(self)
+			self:queuecommand("Set")
+		end;
+		CurrentRateChangedMessageCommand=function(self)
+			self:queuecommand("Set")
+		end;
 	};
 };
 
@@ -138,7 +145,9 @@ Screen[#Screen+1] = Def.StepsDisplayList {
 	};
 	CursorP2 = Def.ActorFrame {}; -- no player 2
 	CursorP1Frame = Def.Actor{
-		ChangeCommand=cmd(stoptweening;decelerate,0.05)
+		ChangeCommand=function(self)
+			self:stoptweening():decelerate(0.05)
+		end
 	};
 	CursorP2Frame = Def.Actor{}; -- none
 

@@ -41,7 +41,9 @@ local average = 0
 --end
 
 local o = Def.ActorFrame{
-	InitCommand=cmd(xy,plotX,plotY),
+	InitCommand=function(self)
+		self:xy(plotX,plotY)
+	end,
 	CodeMessageCommand=function(self,params)
 		if params.Name == "PrevJudge" and judge > 1 then
 			judge = judge - 1
@@ -53,7 +55,9 @@ local o = Def.ActorFrame{
 	end,
 }
 -- Background
-o[#o+1] = Def.Quad{InitCommand=cmd(zoomto,plotWidth+plotMargin,plotHeight+plotMargin;diffuse,color("#08090c"))}
+o[#o+1] = Def.Quad{InitCommand=function(self)
+	self:zoomto(plotWidth+plotMargin,plotHeight+plotMargin):diffuse(color("#08090c"))
+end}
 -- Convert noterows to timestamps and plot dots
 local wuab = {}
 for i=1,#nrt do
@@ -104,13 +108,17 @@ o[#o+1] = Def.ActorMultiVertex{
 
 -- Early/Late markers
 o[#o+1] = LoadFont("Common Normal")..{
-	InitCommand=cmd(xy,-plotWidth/2,-plotHeight/2+2;settextf,"Late (+%ims)", maxOffset;zoom,0.35;halign,0;valign,0),
+	InitCommand=function(self)
+		self:xy(-plotWidth/2,-plotHeight/2+2):settextf("Late (+%ims)", maxOffset):zoom(0.35):halign(0):valign(0)
+	end,
 	JudgeDisplayChangedMessageCommand=function(self)
 		self:settextf("Late (+%ims)", maxOffset)
 	end
 }
 o[#o+1] = LoadFont("Common Normal")..{
-	InitCommand=cmd(xy,-plotWidth/2,plotHeight/2-2;settextf,"Early (-%ims)", maxOffset;zoom,0.35;halign,0;valign,1),
+	InitCommand=function(self)
+		self:xy(-plotWidth/2,plotHeight/2-2):settextf("Early (-%ims)", maxOffset):zoom(0.35):halign(0):valign(1)
+	end,
 	JudgeDisplayChangedMessageCommand=function(self)
 		self:settextf("Early (-%ims)", maxOffset)
 	end
