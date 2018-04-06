@@ -1,7 +1,6 @@
 -- TODO
 -- Add banner too
 --- WAY TOO MANY TABLES
---- NOTE: The script to contain these in is "Texts.lua", do this tomorrow
 
 -- Yes this file is long, but it's much neater than Til Death's, just Ctrl+F for what you want
 

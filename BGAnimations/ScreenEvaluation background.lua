@@ -5,7 +5,7 @@ return Def.Sprite {
 	OnCommand=function(self)
 		if GAMESTATE:GetCurrentSong():GetBackgroundPath() then
 			self:visible(true);
-			self:diffuse(color("#101219"));
+			self:diffuse(color("#394159"));
 			self:LoadBackground(GAMESTATE:GetCurrentSong():GetBackgroundPath());
 			self:stretchto(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
 		end;

@@ -1,17 +1,21 @@
-- Remove legacy CMD wrappers from all current Lua files
-
 === EVALUATION SCREEN ===
-- Organize the evaluation screen to use ActorFrame relative positioning, makes it a lot easier to move things
-- Add Held/LetGo, Mines, and Earliest/Latest/Mean information
-- Add song information such as name, song pack, and rate
-- Add player/profile info
-- Add high score list
+- Add the artist somewhere
+- Completely redo this screen's code, move info into scripts
 
 === MUSIC SELECT SCREEN ===
-- Start adding profile and song info to the music selection screen
-- That includes previous scores, current high score, and song skillset info
+- Profile info
+- Song info in the box to the right of the banner
+- These tabs:
+-- Score
+-- Profile
+-- Search
 
 === GAMEPLAY SCREEN ===
+- Remove that STUPID fallback life bar and add a cool one
 - Add song length bar
 - Add judgment counter
 - Add current Wife%
+- I'll think of more features
+
+=== TITLE SCREEN ===
+- Everything

@@ -51,9 +51,9 @@ end
 
 
 Screen[#Screen+1] = LoadActor("ProfileCard");
-Screen[#Screen+1] = LoadActor("RightPane");
+Screen[#Screen+1] = LoadActor("DifficultyBG");
 Screen[#Screen+1] = LoadActor("Tab_MSD");
-Screen[#Screen+1] = LoadActor("TopRightPane");
+Screen[#Screen+1] = LoadActor("SongInfo");
 
 Screen[#Screen+1] = Def.ActorFrame{
 	-- **score related stuff** These need to be updated with rate changed commands
